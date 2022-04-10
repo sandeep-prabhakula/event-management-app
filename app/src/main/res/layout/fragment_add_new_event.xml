@@ -25,6 +25,17 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/eventOrganizerEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="Enter the event organizer email"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
                 android:id="@+id/eventName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

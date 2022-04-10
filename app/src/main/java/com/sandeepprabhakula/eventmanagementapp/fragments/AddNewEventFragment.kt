@@ -97,11 +97,15 @@ class AddNewEventFragment : Fragment() {
 
         binding.createEvent.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
+                val organizerEmail = binding.eventOrganizerEmail.text.toString()
+                val isEmail = organizerEmail.contains("@", ignoreCase = true)
                 if (!TextUtils.isEmpty(binding.eventName.text) &&
                     !TextUtils.isEmpty(binding.eventDescription.text) &&
                     !TextUtils.isEmpty(binding.eventStartDate.text) &&
                     !TextUtils.isEmpty(binding.eventEndDate.text) &&
+                    !TextUtils.isEmpty(binding.eventOrganizerEmail.text) &&
                     isEventAlreadyPresent(binding.eventName.text.toString()) &&
+                    isEmail &&
                     binding.isPaidTxt.text.toString() != "is event paid or not?" &&
                     binding.typeOfEvent.text.toString() != "Select the type the event belongs to" &&
                     curFile != null &&
@@ -120,7 +124,8 @@ class AddNewEventFragment : Fragment() {
                         binding.eventStartDate.text.toString(),
                         binding.eventEndDate.text.toString(),
                         binding.isPaidTxt.text.toString(),
-                        posterURL
+                        posterURL,
+                        binding.eventOrganizerEmail.text.toString()
                     )
                     eventsDao.createEvent(eventDetails)
                     withContext(Dispatchers.Main) { findNavController().navigate(R.id.action_addNewEventFragment_to_eventsFragment2) }

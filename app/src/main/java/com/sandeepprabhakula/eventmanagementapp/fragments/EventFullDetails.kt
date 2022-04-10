@@ -1,6 +1,7 @@
 package com.sandeepprabhakula.eventmanagementapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.sandeepprabhakula.eventmanagementapp.data.Utils
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentEventFullDetailsBinding
 
 class EventFullDetails : Fragment() {
-    private var _binding:FragmentEventFullDetailsBinding? = null
+    private var _binding: FragmentEventFullDetailsBinding? = null
     private val binding get() = _binding!!
     private val args by navArgs<EventFullDetailsArgs>()
     private val mAuth = FirebaseAuth.getInstance()
@@ -22,12 +23,17 @@ class EventFullDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentEventFullDetailsBinding.inflate(layoutInflater,container,false)
+        _binding = FragmentEventFullDetailsBinding.inflate(layoutInflater, container, false)
         binding.scanParticipant.setOnClickListener {
-            val action = EventFullDetailsDirections.actionEventFullDetailsToQRCodeScanner(args.eventDetails.eventName)
+            val action =
+                EventFullDetailsDirections.actionEventFullDetailsToQRCodeScanner(args.eventDetails.eventName)
             findNavController().navigate(action)
         }
-        if(currentUser?.uid!=Utils.ADMIN_UID){
+        val organiserEmail = currentUser?.email
+        if (currentUser?.uid == Utils.ADMIN_UID || organiserEmail==args.eventDetails.organizerEmail
+        ) {
+            binding.scanParticipant.visibility = View.VISIBLE
+        }else {
             binding.scanParticipant.visibility = View.GONE
         }
         Glide.with(this).load(args.eventDetails.posterURL).into(binding.eventDetailsPoster)

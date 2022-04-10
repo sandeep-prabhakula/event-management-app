@@ -93,7 +93,7 @@ class QRCodeScanner : Fragment() {
                     withContext(Dispatchers.Main) {
                         binding.UserEmailFromQR.text = user?.userEmail
                         binding.UserNameFromQR.text = user?.userName
-                        Glide.with(requireContext()).load(user?.userImageURL).circleCrop()
+                        Glide.with(binding.dpFromQR).load(user?.userImageURL).circleCrop()
                             .into(binding.dpFromQR)
                     }
                 }

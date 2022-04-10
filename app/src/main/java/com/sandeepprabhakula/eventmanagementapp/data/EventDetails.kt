@@ -12,5 +12,6 @@ data class EventDetails(
     var eventEndDate:String? = "",
     var isPaid:String = "",
     var posterURL:String = "",
+    var organizerEmail:String = "",
     var listOfParticipants:ArrayList<String> = ArrayList(),
 ):Parcelable
