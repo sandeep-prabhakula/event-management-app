@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.sandeepprabhakula.eventmanagementapp.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_eventsFragment"
+            app:destination="@id/eventsFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.sandeepprabhakula.eventmanagementapp.fragments.EventsFragment"
+        android:label="fragment_events_fragement"
+        tools:layout="@layout/fragment_events_fragement" >
+        <action
+            android:id="@+id/action_eventsFragment_to_addNewEventFragment"
+            app:destination="@id/addNewEventFragment" />
+        <action
+            android:id="@+id/action_eventsFragment_to_eventFullDetails"
+            app:destination="@id/eventFullDetails"
+            app:popUpTo="@id/eventFullDetails"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_eventsFragment_to_completeProfile2"
+            app:destination="@id/completeProfile2" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewEventFragment"
+        android:name="com.sandeepprabhakula.eventmanagementapp.fragments.AddNewEventFragment"
+        android:label="fragment_add_new_event"
+        tools:layout="@layout/fragment_add_new_event" >
+        <action
+            android:id="@+id/action_addNewEventFragment_to_eventsFragment2"
+            app:destination="@id/eventsFragment"
+            app:popUpTo="@id/addNewEventFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfile"
+        android:name="com.sandeepprabhakula.eventmanagementapp.fragments.UserProfile"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfile_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/userProfile"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userProfile_to_qrFragment"
+            app:destination="@id/qrFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/qrFragment"
+        android:name="com.sandeepprabhakula.eventmanagementapp.fragments.QrFragment"
+        android:label="fragment_qr"
+        tools:layout="@layout/fragment_qr" />
+    <fragment
+        android:id="@+id/QRCodeScanner"
+        android:name="com.sandeepprabhakula.eventmanagementapp.fragments.QRCodeScanner"
+        android:label="fragment_q_r_code_scanner"
+        tools:layout="@layout/fragment_q_r_code_scanner" >
+        <argument
+            android:name="eventName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_QRCodeScanner_to_eventsFragment"
+            app:destination="@id/eventsFragment"
+            app:popUpTo="@id/QRCodeScanner"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFullDetails"
+        android:name="com.sandeepprabhakula.eventmanagementapp.fragments.EventFullDetails"
+        android:label="fragment_event_full_details"
+        tools:layout="@layout/fragment_event_full_details" >
+        <argument
+            android:name="event_details"
+            app:argType="com.sandeepprabhakula.eventmanagementapp.data.EventDetails" />
+        <action
+            android:id="@+id/action_eventFullDetails_to_QRCodeScanner"
+            app:destination="@id/QRCodeScanner" />
+    </fragment>
+    <fragment
+        android:id="@+id/completeProfile2"
+        android:name="com.sandeepprabhakula.eventmanagementapp.fragments.CompleteProfile"
+        android:label="fragment_complete_profile"
+        tools:layout="@layout/fragment_complete_profile" >
+        <action
+            android:id="@+id/action_completeProfile2_to_eventsFragment"
+            app:destination="@id/eventsFragment"
+            app:popUpTo="@id/completeProfile2"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.EventFullDetails">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:id="@+id/eventDetailsPoster"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toTopOf="@+id/eventDetailsEventName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/eventDetailsEventName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="Ciencia"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/eventDetailsEventDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventDetailsPoster" />
+
+            <TextView
+                android:id="@+id/eventDetailsEventDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/inter_medium"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                android:text="Hello mikeTesting"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventDetailsEventName" />
+
+            <TextView
+                android:id="@+id/eventDetailsEventStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="12-04-2022"
+                android:textSize="20sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tV"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tV" />
+
+            <TextView
+                android:id="@+id/tV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="to"
+                app:layout_constraintLeft_toRightOf="@id/eventDetailsEventStartDate"
+                app:layout_constraintRight_toLeftOf="@id/eventDetailsEventEndDate"
+                app:layout_constraintTop_toBottomOf="@id/eventDetailsEventDescription" />
+
+            <TextView
+                android:id="@+id/eventDetailsEventEndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="13-04-2022"
+                android:textSize="20sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tV"
+                app:layout_constraintLeft_toRightOf="@id/tV"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/noOfParticipantsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Number of participants :  "
+                android:textSize="20sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/noOfParticipants"
+                app:layout_constraintRight_toLeftOf="@id/noOfParticipants"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/noOfParticipants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/inter_bold"
+                android:text=""
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/noOfParticipantsTxt"
+                app:layout_constraintTop_toBottomOf="@id/tV" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Event Type : "
+                android:textSize="20sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/eventDetailsEventType"
+                app:layout_constraintRight_toLeftOf="@id/eventDetailsEventType"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/eventDetailsEventType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="Paid"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toRightOf="@id/textView6"
+                app:layout_constraintTop_toBottomOf="@id/noOfParticipants" />
+
+            <Button
+                android:id="@+id/scanParticipant"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Scan Participant"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventDetailsEventType" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
