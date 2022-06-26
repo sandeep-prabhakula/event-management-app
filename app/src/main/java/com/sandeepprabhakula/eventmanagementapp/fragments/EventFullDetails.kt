@@ -1,7 +1,6 @@
 package com.sandeepprabhakula.eventmanagementapp.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.sandeepprabhakula.eventmanagementapp.data.Utils
+import com.sandeepprabhakula.eventmanagementapp.BuildConfig
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentEventFullDetailsBinding
 
 class EventFullDetails : Fragment() {
@@ -30,7 +29,7 @@ class EventFullDetails : Fragment() {
             findNavController().navigate(action)
         }
         val organiserEmail = currentUser?.email
-        if (currentUser?.uid == Utils.ADMIN_UID || organiserEmail==args.eventDetails.organizerEmail
+        if (currentUser?.uid == BuildConfig.ADMIN_UID || organiserEmail==args.eventDetails.organizerEmail
         ) {
             binding.scanParticipant.visibility = View.VISIBLE
         }else {

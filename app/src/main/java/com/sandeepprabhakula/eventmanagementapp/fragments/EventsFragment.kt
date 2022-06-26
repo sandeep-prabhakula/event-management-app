@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.Query
+import com.sandeepprabhakula.eventmanagementapp.BuildConfig
 import com.sandeepprabhakula.eventmanagementapp.R
 import com.sandeepprabhakula.eventmanagementapp.adapters.EventsAdapter
 import com.sandeepprabhakula.eventmanagementapp.adapters.NonTechEventAdapter
@@ -18,7 +19,6 @@ import com.sandeepprabhakula.eventmanagementapp.daos.EventsDao
 import com.sandeepprabhakula.eventmanagementapp.daos.UserDao
 import com.sandeepprabhakula.eventmanagementapp.data.EventDetails
 import com.sandeepprabhakula.eventmanagementapp.data.User
-import com.sandeepprabhakula.eventmanagementapp.data.Utils
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentEventsFragementBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,12 +40,12 @@ class EventsFragment : Fragment(), OnClickEventDetails {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEventsFragementBinding.inflate(layoutInflater, container, false)
-        if (currentUser?.uid != Utils.ADMIN_UID) {
+        if (currentUser?.uid != BuildConfig.ADMIN_UID) {
             binding.addNewEvent.visibility = View.GONE
         } else {
             binding.addNewEvent.visibility = View.VISIBLE
         }
-        if (currentUser?.uid != Utils.ADMIN_UID) {
+        if (currentUser?.uid != BuildConfig.ADMIN_UID) {
             CoroutineScope(Dispatchers.IO).launch {
                 val user = userDao.getUserById(currentUser?.uid.toString()).await()
                     .toObject(User::class.java)
