@@ -22,6 +22,7 @@ android {
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
         buildConfigField "String","ADMIN_UID", "\"${properties.getProperty("ADMIN_UID")}\""
+        buildConfigField "String","OAUTH_CLIENT_ID","\"${properties.getProperty("OAUTH_CLIENT_ID")}\""
     }
     buildFeatures {
         viewBinding = true

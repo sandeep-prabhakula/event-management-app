@@ -54,7 +54,7 @@
                 android:background="@drawable/description_background"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="Description of the event in 100 characters5"
+                android:hint="Description of the event in 100 characters"
                 android:inputType="textMultiLine"
                 android:maxLength="150"
                 android:padding="5dp" />

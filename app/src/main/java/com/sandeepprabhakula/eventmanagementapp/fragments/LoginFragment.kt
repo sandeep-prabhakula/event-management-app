@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import com.sandeepprabhakula.eventmanagementapp.BuildConfig
 import com.sandeepprabhakula.eventmanagementapp.R
 import com.sandeepprabhakula.eventmanagementapp.daos.UserDao
 import com.sandeepprabhakula.eventmanagementapp.data.User
@@ -41,7 +42,7 @@ class LoginFragment : Fragment() {
         userSignInText.text = "Sign Up With Google"
         mAuth = FirebaseAuth.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("413152487600-2hn7dmaar6f0o1nra417uh5atfducrr3.apps.googleusercontent.com")
+            .requestIdToken(BuildConfig.OAUTH_CLIENT_ID)
             .requestEmail()
             .build()
         if(mAuth.currentUser==null){
