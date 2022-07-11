@@ -2,6 +2,7 @@ package com.sandeepprabhakula.eventmanagementapp.fragments
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,16 +54,20 @@ class CompleteProfile : Fragment() {
                     user?.userCollegeName = collegeName
                     userDao.completeProfile(user!!)
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(
+                        val toast = Toast.makeText(
                             context,
                             "profile completion successful.",
                             Toast.LENGTH_SHORT
-                        ).show()
+                        )
+                        toast.setGravity(Gravity.CENTER, 0, 0)
+                        toast.show()
                         findNavController().navigate(R.id.action_completeProfile2_to_eventsFragment)
                     }
                 }
             } else {
-                Toast.makeText(context, "Something went wrong.", Toast.LENGTH_SHORT).show()
+                val toast = Toast.makeText(context, "Something went wrong.", Toast.LENGTH_SHORT)
+                toast.setGravity(Gravity.CENTER, 0, 0)
+                toast.show()
             }
         }
         return binding.root

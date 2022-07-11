@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -131,11 +132,13 @@ class AddNewEventFragment : Fragment() {
                     withContext(Dispatchers.Main) { findNavController().navigate(R.id.action_addNewEventFragment_to_eventsFragment2) }
                 } else {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(
+                        val toast = Toast.makeText(
                             context,
                             "Something went wrong",
                             Toast.LENGTH_SHORT
-                        ).show()
+                        )
+                        toast.setGravity(Gravity.CENTER, 0, 0)
+                        toast.show()
                     }
                 }
             }
@@ -206,7 +209,9 @@ class AddNewEventFragment : Fragment() {
             }
         } catch (e: Exception) {
             withContext(Dispatchers.Main) {
-                Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                val toast = Toast.makeText(context, e.message, Toast.LENGTH_SHORT)
+                toast.setGravity(Gravity.CENTER, 0, 0)
+                toast.show()
             }
         }
     }

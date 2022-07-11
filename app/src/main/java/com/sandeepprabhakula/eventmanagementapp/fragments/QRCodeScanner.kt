@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.util.SparseArray
-import android.view.LayoutInflater
-import android.view.SurfaceHolder
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -44,6 +41,7 @@ class QRCodeScanner : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val toast = Toast.makeText(context,"No User Scanned",Toast.LENGTH_SHORT)
         _binding = FragmentQRCodeScannerBinding.inflate(layoutInflater, container, false)
         requestPermissions()
         setUpControls()
@@ -61,7 +59,8 @@ class QRCodeScanner : Fragment() {
                 alertDialog.show()
 
             }else{
-                Toast.makeText(context,"No User Scanned",Toast.LENGTH_SHORT).show()
+                toast.setGravity(Gravity.CENTER,0,0)
+                toast.show()
             }
         }
         return binding.root

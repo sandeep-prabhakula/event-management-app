@@ -23,15 +23,27 @@
         tools:layout="@layout/fragment_events_fragement" >
         <action
             android:id="@+id/action_eventsFragment_to_addNewEventFragment"
-            app:destination="@id/addNewEventFragment" />
+            app:destination="@id/addNewEventFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_eventsFragment_to_eventFullDetails"
             app:destination="@id/eventFullDetails"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/eventFullDetails"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_eventsFragment_to_completeProfile2"
-            app:destination="@id/completeProfile2" />
+            app:destination="@id/completeProfile2"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addNewEventFragment"
@@ -41,6 +53,10 @@
         <action
             android:id="@+id/action_addNewEventFragment_to_eventsFragment2"
             app:destination="@id/eventsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/addNewEventFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -52,11 +68,19 @@
         <action
             android:id="@+id/action_userProfile_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/userProfile"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_userProfile_to_qrFragment"
-            app:destination="@id/qrFragment" />
+            app:destination="@id/qrFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/qrFragment"
@@ -74,6 +98,10 @@
         <action
             android:id="@+id/action_QRCodeScanner_to_eventsFragment"
             app:destination="@id/eventsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/QRCodeScanner"
             app:popUpToInclusive="true" />
     </fragment>
@@ -87,7 +115,11 @@
             app:argType="com.sandeepprabhakula.eventmanagementapp.data.EventDetails" />
         <action
             android:id="@+id/action_eventFullDetails_to_QRCodeScanner"
-            app:destination="@id/QRCodeScanner" />
+            app:destination="@id/QRCodeScanner"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/completeProfile2"
@@ -97,6 +129,10 @@
         <action
             android:id="@+id/action_completeProfile2_to_eventsFragment"
             app:destination="@id/eventsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/completeProfile2"
             app:popUpToInclusive="true" />
     </fragment>
