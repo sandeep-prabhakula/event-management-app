@@ -47,8 +47,11 @@ class EventsFragment : Fragment(), OnClickEventDetails {
         }
         if (currentUser?.uid != BuildConfig.ADMIN_UID) {
             CoroutineScope(Dispatchers.IO).launch {
-                val user = userDao.getUserById(currentUser?.uid.toString()).await()
+                var user = userDao.getCurrentUser(currentUser?.uid.toString()).await()
                     .toObject(User::class.java)
+                if(user == null){
+                    user = userDao.getUserById(currentUser?.uid.toString()).await().toObject(User::class.java)
+                }
                 if (!user?.profileIsComplete!!) {
                     withContext(Dispatchers.Main) {
                         findNavController().navigate(R.id.action_eventsFragment_to_completeProfile2)

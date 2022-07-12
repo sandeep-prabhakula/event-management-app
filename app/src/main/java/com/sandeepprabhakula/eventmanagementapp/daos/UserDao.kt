@@ -4,7 +4,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.Source
 import com.sandeepprabhakula.eventmanagementapp.data.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +25,9 @@ class UserDao {
     }
     fun getUserById(uid:String): Task<DocumentSnapshot> {
         return usersCollection.document(uid).get()
+    }
+    fun getCurrentUser(uid:String):Task<DocumentSnapshot>{
+        return usersCollection.document(uid).get(Source.CACHE)
     }
     fun completeProfile(user:User){
         CoroutineScope(Dispatchers.IO).launch {

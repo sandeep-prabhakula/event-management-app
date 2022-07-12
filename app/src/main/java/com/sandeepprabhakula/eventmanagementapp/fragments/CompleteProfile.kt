@@ -44,7 +44,7 @@ class CompleteProfile : Fragment() {
                 val rollNumber = binding.userRollNo.text.toString()
                 val collegeName = binding.userCollegeName.text.toString()
                 CoroutineScope(Dispatchers.IO).launch {
-                    val user = userDao.getUserById(currentUser?.uid.toString()).await()
+                    val user = userDao.getCurrentUser(currentUser?.uid.toString()).await()
                         .toObject(User::class.java)
                     user?.profileIsComplete = true
                     user?.userBranch = branch
