@@ -105,7 +105,7 @@ class EventsFragment : Fragment(), OnClickEventDetails {
     override fun onEventDetailsClicked(eventName: String) {
         val eventDao = EventsDao()
         CoroutineScope(Dispatchers.IO).launch {
-            val event = eventDao.getEventById(eventName).await().toObject(EventDetails::class.java)
+            val event = eventDao.getEventFromCache(eventName).await().toObject(EventDetails::class.java)
             withContext(Dispatchers.Main) {
                 val action =
                     EventsFragmentDirections.actionEventsFragmentToEventFullDetails(event!!)

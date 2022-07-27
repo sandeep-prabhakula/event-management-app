@@ -21,10 +21,7 @@ class EventsDao {
         }
     }
 
-    fun getEventById(postId: String): Task<DocumentSnapshot> {
-        return eventCollection.document(postId).get()
-    }
-    private fun getEventFromCache(postID:String):Task<DocumentSnapshot>{
+    fun getEventFromCache(postID:String):Task<DocumentSnapshot>{
         return eventCollection.document(postID).get(Source.CACHE)
     }
     fun addParticipantToEvent(email: String, eventId: String) {
