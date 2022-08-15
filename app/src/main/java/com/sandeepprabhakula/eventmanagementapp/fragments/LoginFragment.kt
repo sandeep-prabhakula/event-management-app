@@ -21,9 +21,9 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.sandeepprabhakula.eventmanagementapp.BuildConfig
 import com.sandeepprabhakula.eventmanagementapp.R
-import com.sandeepprabhakula.eventmanagementapp.daos.UserDao
 import com.sandeepprabhakula.eventmanagementapp.data.User
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentLoginBinding
+import com.sandeepprabhakula.eventmanagementapp.singleton.SingletonDaoObjects
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 
@@ -109,7 +109,7 @@ class LoginFragment : Fragment() {
                         firebaseUser.email.toString(),
                         firebaseUser.photoUrl.toString()
                     )
-                    val userDao = UserDao()
+                    val userDao = SingletonDaoObjects.userDao
                     userDao.addUsers(user)
                     withContext(Dispatchers.Main) {
                         findNavController().navigate(R.id.action_loginFragment_to_eventsFragment)

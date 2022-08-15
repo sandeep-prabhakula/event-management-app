@@ -15,11 +15,10 @@ import com.sandeepprabhakula.eventmanagementapp.R
 import com.sandeepprabhakula.eventmanagementapp.adapters.EventsAdapter
 import com.sandeepprabhakula.eventmanagementapp.adapters.NonTechEventAdapter
 import com.sandeepprabhakula.eventmanagementapp.adapters.OnClickEventDetails
-import com.sandeepprabhakula.eventmanagementapp.daos.EventsDao
-import com.sandeepprabhakula.eventmanagementapp.daos.UserDao
 import com.sandeepprabhakula.eventmanagementapp.data.EventDetails
 import com.sandeepprabhakula.eventmanagementapp.data.User
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentEventsFragementBinding
+import com.sandeepprabhakula.eventmanagementapp.singleton.SingletonDaoObjects
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,8 +32,8 @@ class EventsFragment : Fragment(), OnClickEventDetails {
     private val currentUser = mAuth.currentUser
     private lateinit var adapter: EventsAdapter
     private lateinit var nonEveAdapter: NonTechEventAdapter
-    private lateinit var eventsDao: EventsDao
-    private val userDao = UserDao()
+    private var eventsDao = SingletonDaoObjects.eventsDao
+    private val userDao = SingletonDaoObjects.userDao
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,7 +67,6 @@ class EventsFragment : Fragment(), OnClickEventDetails {
     }
 
     private fun setUpRecyclerViewForTech() {
-        eventsDao = EventsDao()
         val query = eventsDao.eventCollection.whereEqualTo("typeOfEvent", "Technical")
             .orderBy("eventStartDate", Query.Direction.DESCENDING)
         val recyclerViewOptions = FirestoreRecyclerOptions.Builder<EventDetails>()
@@ -80,7 +78,6 @@ class EventsFragment : Fragment(), OnClickEventDetails {
     }
 
     private fun setUpRecyclerViewForNonTech() {
-        eventsDao = EventsDao()
         val query = eventsDao.eventCollection.whereEqualTo("typeOfEvent", "Non Technical")
         val recyclerViewOptions = FirestoreRecyclerOptions.Builder<EventDetails>()
             .setQuery(query, EventDetails::class.java).build()
@@ -103,9 +100,8 @@ class EventsFragment : Fragment(), OnClickEventDetails {
     }
 
     override fun onEventDetailsClicked(eventName: String) {
-        val eventDao = EventsDao()
         CoroutineScope(Dispatchers.IO).launch {
-            val event = eventDao.getEventFromCache(eventName).await().toObject(EventDetails::class.java)
+            val event = eventsDao.getEventFromCache(eventName).await().toObject(EventDetails::class.java)
             withContext(Dispatchers.Main) {
                 val action =
                     EventsFragmentDirections.actionEventsFragmentToEventFullDetails(event!!)

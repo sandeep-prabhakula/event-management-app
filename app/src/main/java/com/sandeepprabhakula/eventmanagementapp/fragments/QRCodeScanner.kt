@@ -19,10 +19,9 @@ import com.google.android.gms.vision.Detector
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.sandeepprabhakula.eventmanagementapp.R
-import com.sandeepprabhakula.eventmanagementapp.daos.EventsDao
-import com.sandeepprabhakula.eventmanagementapp.daos.UserDao
 import com.sandeepprabhakula.eventmanagementapp.data.User
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentQRCodeScannerBinding
+import com.sandeepprabhakula.eventmanagementapp.singleton.SingletonDaoObjects
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,8 +34,8 @@ class QRCodeScanner : Fragment() {
     private val args by navArgs<QRCodeScannerArgs>()
     private var _binding: FragmentQRCodeScannerBinding? = null
     private val binding get() = _binding!!
-    private val userDao = UserDao()
-    private val eventDao = EventsDao()
+    private val userDao = SingletonDaoObjects.userDao
+    private val eventDao = SingletonDaoObjects.eventsDao
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

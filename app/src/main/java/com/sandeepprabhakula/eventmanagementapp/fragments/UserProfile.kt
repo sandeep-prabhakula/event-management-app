@@ -11,9 +11,9 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.sandeepprabhakula.eventmanagementapp.R
-import com.sandeepprabhakula.eventmanagementapp.daos.UserDao
 import com.sandeepprabhakula.eventmanagementapp.data.User
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentUserProfileBinding
+import com.sandeepprabhakula.eventmanagementapp.singleton.SingletonDaoObjects
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ class UserProfile : Fragment() {
     private val currentUser = mAuth.currentUser
     private val db = FirebaseFirestore.getInstance()
     private val usersCollection = db.collection("users")
-    private val userDao = UserDao()
+    private val userDao = SingletonDaoObjects.userDao
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

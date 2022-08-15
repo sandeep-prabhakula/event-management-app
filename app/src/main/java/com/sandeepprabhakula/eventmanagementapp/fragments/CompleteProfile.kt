@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.sandeepprabhakula.eventmanagementapp.R
-import com.sandeepprabhakula.eventmanagementapp.daos.UserDao
 import com.sandeepprabhakula.eventmanagementapp.data.User
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentCompleteProfileBinding
+import com.sandeepprabhakula.eventmanagementapp.singleton.SingletonDaoObjects
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,7 +25,7 @@ class CompleteProfile : Fragment() {
     private val binding get() = _binding!!
     private val mAuth = FirebaseAuth.getInstance()
     private val currentUser = mAuth.currentUser
-    private val userDao = UserDao()
+    private val userDao = SingletonDaoObjects.userDao
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

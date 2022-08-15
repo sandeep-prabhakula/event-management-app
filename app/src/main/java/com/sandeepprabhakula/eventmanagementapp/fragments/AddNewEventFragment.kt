@@ -22,9 +22,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.sandeepprabhakula.eventmanagementapp.R
-import com.sandeepprabhakula.eventmanagementapp.daos.EventsDao
 import com.sandeepprabhakula.eventmanagementapp.data.EventDetails
 import com.sandeepprabhakula.eventmanagementapp.databinding.FragmentAddNewEventBinding
+import com.sandeepprabhakula.eventmanagementapp.singleton.SingletonDaoObjects
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -117,7 +117,7 @@ class AddNewEventFragment : Fragment() {
                     val posterURL =
                         getDownloadURL(binding.eventName.text.toString(), extension.toString())
                     Log.d("url", posterURL)
-                    val eventsDao = EventsDao()
+                    val eventsDao = SingletonDaoObjects.eventsDao
                     val eventDetails = EventDetails(
                         binding.typeOfEvent.text.toString(),
                         binding.eventName.text.toString(),
